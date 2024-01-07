@@ -1,13 +1,26 @@
 import "~/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { Inter, Roboto_Serif, Crimson_Pro } from "next/font/google";
 import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
 const inter = Inter({
+  display: "swap",
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
+});
+
+const robotoSerif = Roboto_Serif({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-roboto-serif",
+});
+
+const crimsonPro = Crimson_Pro({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-crimson-pro",
 });
 
 export const metadata = {
@@ -22,8 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${robotoSerif.variable} ${crimsonPro.variable} antialiased}`}
+    >
+      <body>
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>
