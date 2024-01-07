@@ -2,7 +2,7 @@ import "~/styles/globals.css";
 
 import { Inter, Roboto_Serif, Crimson_Pro } from "next/font/google";
 import { cookies } from "next/headers";
-
+import Header from "~/components/Header";
 import { TRPCReactProvider } from "~/trpc/react";
 
 const inter = Inter({
@@ -41,6 +41,7 @@ export default function RootLayout({
     >
       <body>
         <TRPCReactProvider cookies={cookies().toString()}>
+          <Header />
           {children}
         </TRPCReactProvider>
       </body>
