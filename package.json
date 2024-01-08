@@ -1,5 +1,5 @@
 {
-  "name": "quizme-chof64-me",
+  "name": "studybuddy-chof64-me",
   "version": "0.2.0",
   "private": true,
   "type": "module",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@t3-oss/env-nextjs": "^0.7.1",
     "@tanstack/react-query": "^4.36.1",
