@@ -1,9 +1,9 @@
 import "~/styles/globals.css";
 
-import { Inter, Roboto_Serif, Crimson_Pro } from "next/font/google";
-import { cookies } from "next/headers";
-import Header from "~/components/Header";
+import { Crimson_Pro, Inter, Roboto_Serif } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
+
+import Header from "~/components/Header";
 
 const inter = Inter({
   display: "swap",
@@ -40,7 +40,7 @@ export default function RootLayout({
       className={`${inter.variable} ${robotoSerif.variable} ${crimsonPro.variable} antialiased}`}
     >
       <body>
-        <TRPCReactProvider cookies={cookies().toString()}>
+        <TRPCReactProvider>
           <Header />
           {children}
         </TRPCReactProvider>

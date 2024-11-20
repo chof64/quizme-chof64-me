@@ -1,7 +1,8 @@
 "use client";
 
-import { UpdateIcon } from "@radix-ui/react-icons";
 import { api } from "~/trpc/react";
+import { Repeat2Icon } from "lucide-react";
+
 import { Button } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
@@ -17,7 +18,7 @@ export default function Trivia() {
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   return (
@@ -33,10 +34,10 @@ export default function Trivia() {
             size={"sm"}
             onClick={() => res.refetch()}
           >
-            <UpdateIcon
+            <Repeat2Icon
               className={cn(
                 "mr-1.5 h-3 w-3",
-                res.isFetching && "animate-spin select-none",
+                res.isFetching && "animate-spin select-none"
               )}
             />
             Refetch

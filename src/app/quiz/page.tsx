@@ -1,7 +1,8 @@
 "use client";
 
-import { api } from "~/trpc/react";
 import { useState } from "react";
+import { api } from "~/trpc/react";
+
 import { Button } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
@@ -15,11 +16,11 @@ export default function Choose() {
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   if (!questions.data?.[0]) {
-    async () => await questions.refetch();
+    void questions.refetch();
     return;
   }
 
@@ -68,7 +69,7 @@ export default function Choose() {
                 ? isAnswer(answer)
                   ? "bg-green-100/40"
                   : "bg-red-100/40"
-                : "",
+                : ""
             )}
           >
             <p className="text-xs">
@@ -84,7 +85,7 @@ export default function Choose() {
               <Button
                 className={cn(
                   "h-fit min-h-12 items-center justify-start border-neutral-300/60 bg-gray-100/40 px-4 shadow-none hover:border-neutral-400/60 hover:bg-gray-200/40",
-                  choiceStyle(choice),
+                  choiceStyle(choice)
                 )}
                 variant={"outline"}
                 onClick={() => hasSelected(choice)}
@@ -93,7 +94,7 @@ export default function Choose() {
                 <span className="mr-2">
                   {hasAnswered ? (isAnswer(choice) ? "✅" : "❌") : "⚫️"}
                 </span>
-                <span className=" text-wrap text-left">{choice}</span>
+                <span className="text-wrap text-left">{choice}</span>
               </Button>
             ))}
           </div>

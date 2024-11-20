@@ -2,8 +2,9 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { ChevronLeftIcon } from "lucide-react";
+
 import { Button } from "~/components/ui/button";
-import { ChevronLeftIcon } from "@radix-ui/react-icons";
 
 export default function Header() {
   const router = useRouter();
