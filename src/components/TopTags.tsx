@@ -1,20 +1,19 @@
 "use client";
 
 import React from "react";
-import { api } from "~/trpc/react";
-import { Button } from "~/components/ui/button";
 import Link from "next/link";
+import { api } from "~/trpc/react";
+
+import { Button } from "~/components/ui/button";
 
 export default function TopTags() {
   const tags = api.quiz.tagByQuestions.useQuery(
-    {
-      limit: 5,
-    },
+    { limit: 5 },
     {
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchOnWindowFocus: false,
-    },
+    }
   );
 
   return (
