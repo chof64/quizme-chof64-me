@@ -59,47 +59,45 @@ export default function Choose() {
   };
 
   return (
-    <main className="mx-auto max-w-md">
-      <section className="my-8 mt-16">
-        <div className="container">
-          <div
-            className={cn(
-              "pattern-random-shapes mt-2 rounded-xl border border-neutral-200/60 bg-white p-8 pt-4",
-              hasAnswered
-                ? isAnswer(answer)
-                  ? "bg-green-100/40"
-                  : "bg-red-100/40"
-                : ""
-            )}
-          >
-            <p className="text-xs">
-              {questions.data[0].category.replaceAll("_", " ")}
-            </p>
-            <h2 className="mt-3 text-xl font-semibold">
-              {questions.data[0].question.text}
-            </h2>
-          </div>
-
-          <div className="mt-6 grid grid-cols-1 gap-4">
-            {questions.data[0].choices.map((choice) => (
-              <Button
-                className={cn(
-                  "h-fit min-h-12 items-center justify-start border-neutral-300/60 bg-gray-100/40 px-4 shadow-none hover:border-neutral-400/60 hover:bg-gray-200/40",
-                  choiceStyle(choice)
-                )}
-                variant={"outline"}
-                onClick={() => hasSelected(choice)}
-                key={choice}
-              >
-                <span className="mr-2">
-                  {hasAnswered ? (isAnswer(choice) ? "✅" : "❌") : "⚫️"}
-                </span>
-                <span className="text-wrap text-left">{choice}</span>
-              </Button>
-            ))}
-          </div>
+    <section className="container my-8 mt-16 max-w-md">
+      <div>
+        <div
+          className={cn(
+            "pattern-random-shapes mt-2 rounded-xl border border-neutral-200/60 bg-white p-8 pt-4",
+            hasAnswered
+              ? isAnswer(answer)
+                ? "bg-green-100/40"
+                : "bg-red-100/40"
+              : ""
+          )}
+        >
+          <p className="text-xs">
+            {questions.data[0].category.replaceAll("_", " ")}
+          </p>
+          <h2 className="mt-3 text-xl font-semibold">
+            {questions.data[0].question.text}
+          </h2>
         </div>
-      </section>
-    </main>
+
+        <div className="mt-6 grid grid-cols-1 gap-4">
+          {questions.data[0].choices.map((choice) => (
+            <Button
+              className={cn(
+                "h-fit min-h-12 items-center justify-start border-neutral-300/60 bg-gray-100/40 px-4 shadow-none hover:border-neutral-400/60 hover:bg-gray-200/40",
+                choiceStyle(choice)
+              )}
+              variant={"outline"}
+              onClick={() => hasSelected(choice)}
+              key={choice}
+            >
+              <span className="mr-2">
+                {hasAnswered ? (isAnswer(choice) ? "✅" : "❌") : "⚫️"}
+              </span>
+              <span className="text-wrap text-left">{choice}</span>
+            </Button>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
