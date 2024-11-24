@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import { Crimson_Pro, Inter, Roboto_Serif } from "next/font/google";
+import { Inter } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 
 import Header from "~/components/Header";
@@ -9,18 +9,6 @@ const inter = Inter({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-const robotoSerif = Roboto_Serif({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-roboto-serif",
-});
-
-const crimsonPro = Crimson_Pro({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-crimson-pro",
 });
 
 export const metadata = {
@@ -36,10 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${robotoSerif.variable} ${crimsonPro.variable} antialiased}`}
-    >
+    <html lang="en" className={`${inter.variable} antialiased}`}>
       <body>
         <TRPCReactProvider>
           <Header />

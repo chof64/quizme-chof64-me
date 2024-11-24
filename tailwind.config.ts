@@ -21,7 +21,6 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "sans-serif"],
-        serif: ["var(--font-roboto-serif)", "Roboto Serif", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
