@@ -100,4 +100,20 @@
   .typo--h1 {
     @apply scroll-m-20 text-3xl font-bold tracking-tight;
   }
+
+  .typo--h2 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0;
+  }
+
+  .typo--h3 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+  }
+
+  .typo--p {
+    @apply leading-7 [&:not(:first-child)]:mt-6;
+  }
+
+  .typo--lead {
+    @apply text-xl text-muted-foreground;
+  }
 }
