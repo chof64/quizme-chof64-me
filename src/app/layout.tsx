@@ -24,8 +24,9 @@ const crimsonPro = Crimson_Pro({
 });
 
 export const metadata = {
-  title: "Study Buddy",
-  description: "Study Buddy to help you learn new things.",
+  title: "QuizMe",
+  description:
+    "A quiz app that lets you test your knowledge. Gamify learning with quizzes on a wide range of topics.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -42,7 +43,7 @@ export default function RootLayout({
       <body>
         <TRPCReactProvider>
           <Header />
-          {children}
+          <main>{children}</main>
         </TRPCReactProvider>
       </body>
     </html>
