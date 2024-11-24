@@ -19,7 +19,7 @@ export default async function QuizTags() {
             <div className="relative h-full w-40 shrink-0 rounded-l-md">
               <Image
                 className="rounded-l-md object-cover"
-                src={`/tags/${spaceToUnderscore(category[0])}.jpg`}
+                src={`/tags/${spaceToUnderscore(category[0])}.avif`}
                 fill
                 alt={`${category[0]} picture`}
               />
