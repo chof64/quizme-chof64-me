@@ -10,8 +10,8 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <header className="mx-auto max-w-md">
-      <div className="container flex items-center py-6">
+    <header className="container max-w-md">
+      <div className="flex items-center py-6">
         <Button variant={"ghost"} size={"icon"} onClick={() => router.back()}>
           <ChevronLeftIcon />
         </Button>
