@@ -1,6 +1,5 @@
-import { z } from "zod";
-
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { z } from "zod";
 
 export const quizRouter = createTRPCRouter({
   question: publicProcedure
@@ -8,7 +7,7 @@ export const quizRouter = createTRPCRouter({
       z.object({
         category: z.string().default("any"),
         limit: z.number().default(10),
-      }),
+      })
     )
     .query(async ({ input }) => {
       const req = await fetch(
@@ -27,27 +26,11 @@ export const quizRouter = createTRPCRouter({
       return questions;
     }),
 
-  single: publicProcedure.query(async () => {
-    const req = await fetch("https://the-trivia-api.com/v2/questions?limit=1");
-    const questions = (await req.json()) as Questions[];
-
-    if (!questions?.[0]) {
-      throw new Error("No questions found");
-    }
-
-    questions[0].choices = [
-      ...questions[0].incorrectAnswers,
-      questions[0].correctAnswer,
-    ].sort(() => Math.random() - 0.5);
-
-    return questions;
-  }),
-
   tagByQuestions: publicProcedure
     .input(
       z.object({
         limit: z.number().default(10),
-      }),
+      })
     )
     .query(async ({ input }) => {
       const req = await fetch(`https://the-trivia-api.com/v2/totals-per-tag`);
