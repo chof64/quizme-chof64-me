@@ -12,7 +12,7 @@ export const quizRouter = createTRPCRouter({
     )
     .query(async ({ input }) => {
       const req = await fetch(
-        `https://the-trivia-api.com/v2/questions?limit=${input.limit}&type=text_choice`,
+        `https://the-trivia-api.com/v2/questions?limit=${input.limit}&type=text_choice${input.category === "any" ? "" : `&tags=${input.category}`}`
       );
 
       const questions = (await req.json()) as Questions[];

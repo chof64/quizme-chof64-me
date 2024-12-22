@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { api } from "~/trpc/react";
 
 import { Button } from "~/components/ui/button";
@@ -9,9 +10,10 @@ import { cn } from "~/lib/utils";
 export default function Choose() {
   const [hasAnswered, setHasAnswered] = useState(false);
   const [answer, setAnswer] = useState("");
+  const searchParams = useSearchParams();
 
   const questions = api.quiz.question.useQuery(
-    { limit: 1 },
+    { limit: 1, category: searchParams.get("tag") ?? "any" },
     {
       refetchOnMount: false,
       refetchOnReconnect: false,
@@ -61,6 +63,7 @@ export default function Choose() {
   return (
     <section className="container my-8 mt-16 max-w-md">
       <div>
+        <div>{searchParams.get("tag")}</div>
         <div
           className={cn(
             "pattern-random-shapes mt-2 rounded-xl border border-neutral-200/60 bg-white p-8 pt-4",
