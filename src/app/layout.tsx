@@ -3,7 +3,7 @@ import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 
-import Header from "~/components/Header";
+import Header from "~/components/header/Header";
 
 const inter = Inter({
   display: "swap",
