@@ -1,8 +1,6 @@
 import React from "react";
 import { api, HydrateClient } from "~/trpc/server";
 
-import Greetings from "~/components/Greetings";
-
 import QuizTags from "./QuizTags";
 import TriviaBox from "./TriviaBox";
 
@@ -13,14 +11,14 @@ export default async function LearnPage() {
   });
 
   return (
-    <div className="container my-8 max-w-md">
-      <section className="mt-8">
-        <p className="text-sm text-neutral-500">
-          <Greetings />
-        </p>
-        <h1 className="typo--h2">Let&apos;s study together</h1>
+    <div className="container my-24 max-w-md">
+      <section className="mt-52">
+        <h2 className="typo--h1 text-muted-foreground">
+          Another day, another opportunity to{" "}
+          <span className="text-foreground">learn something new.</span>
+        </h2>
       </section>
-      <section className="mt-8">
+      <section className="mt-16">
         <HydrateClient>
           <TriviaBox />
         </HydrateClient>
