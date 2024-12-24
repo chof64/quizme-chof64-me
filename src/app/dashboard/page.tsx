@@ -23,8 +23,8 @@ export default async function LearnPage() {
           <TriviaBox />
         </HydrateClient>
       </section>
-      <section className="mt-8">
-        <h2 className="typo--h3">Quiz</h2>
+      <section className="mt-16">
+        <h2 className="typo--h4">Test your knowledge</h2>
         <QuizTags />
       </section>
     </div>
