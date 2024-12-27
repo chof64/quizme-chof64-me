@@ -12,6 +12,10 @@ export const env = createEnv({
       .default("development"),
 
     DATABASE_URL: z.string().url(),
+    DIRECT_URL:
+      process.env.NODE_ENV === "production"
+        ? z.string().url()
+        : z.string().url().optional(),
 
     AUTH_SECRET:
       process.env.NODE_ENV === "production"
@@ -39,6 +43,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
 
     DATABASE_URL: process.env.DATABASE_URL,
+    DIRECT_URL: process.env.DIRECT_URL,
 
     AUTH_SECRET: process.env.AUTH_SECRET,
 
