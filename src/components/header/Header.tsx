@@ -2,14 +2,16 @@
 
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 import { cn } from "~/lib/utils";
 
 import BackNav from "./BackNav";
 
 export default function Header() {
-  // Check if viewport has scrolled
   const [hasScrolled, setHasScrolled] = React.useState(false);
+
+  const { data: session } = useSession();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +42,7 @@ export default function Header() {
             hasScrolled ? "typo--h3" : "typo--h1"
           )}
         >
-          <Link href="/">quizme</Link>
+          <Link href={session ? "/dashboard" : "/"}>quizme</Link>
         </div>
       </section>
       <section></section>

@@ -1,9 +1,10 @@
 import "~/styles/globals.css";
 
-import { Inter } from "next/font/google";
 import { type Metadata } from "next";
-
+import { Inter } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
+import { SessionProvider } from "next-auth/react";
+
 import Header from "~/components/header/Header";
 
 const inter = Inter({
@@ -26,7 +27,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body>
         <TRPCReactProvider>
-          <Header />
+          <SessionProvider>
+            <Header />
+          </SessionProvider>
           <main>{children}</main>
         </TRPCReactProvider>
       </body>
