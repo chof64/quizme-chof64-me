@@ -1,8 +1,9 @@
 import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
-import { TRPCReactProvider } from "~/trpc/react";
+import { type Metadata } from "next";
 
+import { TRPCReactProvider } from "~/trpc/react";
 import Header from "~/components/header/Header";
 
 const inter = Inter({
@@ -11,7 +12,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "QuizMe",
   description:
     "A quiz app that lets you test your knowledge. Gamify learning with quizzes on a wide range of topics.",
@@ -20,11 +21,9 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased}`}>
+    <html lang="en" className={`${inter.variable} antialiased`}>
       <body>
         <TRPCReactProvider>
           <Header />
