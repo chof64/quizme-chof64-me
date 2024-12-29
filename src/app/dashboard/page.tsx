@@ -1,10 +1,15 @@
 import React from "react";
+import { redirect } from "next/navigation";
+import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 
 import QuizTags from "./QuizTags";
 import TriviaBox from "./TriviaBox";
 
 export default async function LearnPage() {
+  const session = await auth();
+  if (!session) redirect("/");
+
   await api.trivia.date.prefetch({
     month: new Date().getMonth() + 1,
     day: new Date().getDate(),

@@ -1,9 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { auth } from "~/server/auth";
 
 import { Button } from "~/components/ui/button";
 
-export default function Home() {
+import GoogleAuthButton from "./GoogleAuthButton";
+
+export default async function Home() {
+  const session = await auth();
+  if (session) redirect("/dashboard");
+
   return (
     <div className="container my-24 flex min-h-[calc(100vh-12rem)] max-w-md flex-col-reverse items-center justify-between">
       <section className="w-full space-y-4">
@@ -14,11 +21,7 @@ export default function Home() {
         <Button className="h-16 w-full" variant={"secondary"} asChild>
           <Link href="/quiz">Start an anonymous quiz</Link>
         </Button>
-        <Button className="h-16 w-full" asChild>
-          <Link href="/dashboard">
-            <span className="line-through">Login with Google</span> Dashboard
-          </Link>
-        </Button>
+        <GoogleAuthButton />
       </section>
     </div>
   );

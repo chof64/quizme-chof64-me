@@ -2,14 +2,17 @@
 
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 import { cn } from "~/lib/utils";
 
 import BackNav from "./BackNav";
+import ProfileNav from "./ProfileNav";
 
 export default function Header() {
-  // Check if viewport has scrolled
   const [hasScrolled, setHasScrolled] = React.useState(false);
+
+  const { data: session } = useSession();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -33,17 +36,17 @@ export default function Header() {
       <section>
         <BackNav />
       </section>
+      <div
+        className={cn(
+          "text-center transition-all delay-100 duration-500 ease-in-out",
+          hasScrolled ? "typo--h2" : "typo--h1"
+        )}
+      >
+        <Link href={session ? "/dashboard" : "/"}>quizme</Link>
+      </div>
       <section>
-        <div
-          className={cn(
-            "text-center transition-all delay-100 duration-500 ease-in-out",
-            hasScrolled ? "typo--h3" : "typo--h1"
-          )}
-        >
-          <Link href="/">quizme</Link>
-        </div>
+        <ProfileNav />
       </section>
-      <section></section>
     </header>
   );
 }
