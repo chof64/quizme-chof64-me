@@ -11,7 +11,7 @@ export default function GoogleAuthButton() {
       className="h-16 w-full"
       onClick={() => signIn("google", { redirectTo: "/dashboard" })}
     >
-      <span className="line-through">Login with Google</span> Dashboard
+      Login with Google
     </Button>
   );
 }
